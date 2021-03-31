@@ -28,10 +28,13 @@
           
           document.write("<p><div>1.我是B2B53,林京諭</div></p>");
           document.write("<p><h4>2.大家好!我最喜歡吃的水果是橘子</h4></p>");
+          
+          document.write("<div>以下為變數設定練習</div>")
           document.write("<p>3.我是"+myName+"， 今年"+myAge+"歲</p>");
           document.write("<p>4.我的身高為"+myHeight+"公分，我的體重為"+myWeight+"公斤</p>");
           document.write("<p>5.所以我的BMI為"+myBMI+"</p>");
           
+          document.write("<div>以下for計次迴圈控制</div>")
           document.write("<p>6."+count+"</p>");
           var no=6;
           function sum(number){
@@ -50,10 +53,10 @@
           
           sum(10000);
     
-          
+          document.write("<div>以下是九九乘法表</div>")
           for (i=1;i<=9;i++){
               for (j=1;j<=9;j++){
-                  document.write("<p>"+i+"*"+j+"="+i*j+" </p>")
+                  document.write(i+"*"+j+"="+i*j+" ");
               }
               document.write("<br>");
           }
