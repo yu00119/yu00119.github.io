@@ -2,29 +2,38 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>課堂作業05</title>
+		<title>家庭作業04</title>
 	<style>
-		div {
-			color: red;
-		}
+        td{
+            color:cadetblue;
+        }
         p {
             margin: 5px;
             }
 		h4 {
 			color: red;
 		}
+        tr{
+            text-align: left;
+        }
+        table{
+            border-color: cornflowerblue;
+        }
 	</style>
 </head>
 	<body>
       <script>
           
-          document.write("<div>九九乘法表</div>")
-         
-          for (i=1;i<=9;i++){
-              for (j=1;j<=9;j++){
-                  document.write(i+"*"+j+"="+i*j+" ");
+          document.write("<p><h4>九九乘法表</h4></p>")
+          document.write("<table border='1' width='50%' cellspacing='0' cellpadding='0'>");
+          for (var i=1; i<=9; i++){
+              document.write("<tr>");
+              for (var j=1; j<=9; j++){
+                  document.write("<td>"+j+"x"+i+"="+j*i+" </td>");
               }
+           document.write("</tr>");                 
           }
+         document.write("</table>");
           
           
           
