@@ -27,6 +27,7 @@
         <input type="radio" name="cloth" id="cloth02" value="圓領排釦針織外套（1件）">圓領排釦針織外套（1件） 390元<br>
         <input type="radio" name="cloth" id="cloth03" value="可拆式細肩帶背心（1件）">可拆式細肩帶背心（1件） 190元<br>
         <input type="radio" name="cloth" id="cloth04" value="單口袋側排釦長版襯衫（1件）">單口袋側排釦長版襯衫（1件） 490元<br>
+        <input type="radio" name="cloth" id="cloth05" value="捲邊造型排釦針織上衣（1件）">捲邊造型排釦針織上衣（1件） 190元<br>
     </form>
         <button onclick="shoppingInfo()"><h4>結帳</h4></button>
         <div id="demo"></div>
@@ -60,10 +61,11 @@
                 for(i=5; i<=7; i++){
                     if(x.elements[i].checked == true){
                         switch(i){
-                            case 5: price=190; break;
-                            case 6: price=390; break;
-                            case 7: price=190; break;
-                            case 8: price=490; break;
+                            case 6: price=190; break;
+                            case 7: price=390; break;
+                            case 8: price=190; break;
+                            case 9: price=490; break;
+                            case 10: price=190; break;
                         }
                         text += "衣服種類：" + x.elements[i].value + "<br>";
                         text += "價格合計：" + price + "元<br>";
