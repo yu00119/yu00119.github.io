@@ -39,10 +39,15 @@
                 var text ="<h4>您的購物資訊如下：</h4>";
                 var i;
                 for(i=0; i<5; i++){
+                    <table border="1" width="90%" cellspacing="0" cellpadding="0">
+
                     switch(i){
+                        <tr>
                         case 0:
-                            item ="姓名：";
-                            break;
+                            <td> item ="姓名："</td>
+                            <td>name01</td>;
+                        break;
+                        </tr>
                         case 1:
                             item ="收件住址：";
                             break;
@@ -69,6 +74,7 @@
                         }
                         text += "衣服種類：" + x.elements[i].value + "<br>";
                         text += "價格合計：" + price + "元<br>";
+        </table>
                     }
                 }
                 document.getElementById("demo").innerHTML=text;
