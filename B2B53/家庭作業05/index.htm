@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-		<title>課堂作業06</title>
+		<title>家庭作業05</title>
 	<style>
         h4{
             color: red;
@@ -28,7 +28,9 @@
         <input type="radio" name="cloth" id="cloth03" value="可拆式細肩帶背心（1件）">可拆式細肩帶背心（1件） 190元<br>
         <input type="radio" name="cloth" id="cloth04" value="單口袋側排釦長版襯衫（1件）">單口袋側排釦長版襯衫（1件） 490元<br>
         <input type="radio" name="cloth" id="cloth05" value="捲邊造型排釦針織上衣（1件）">捲邊造型排釦針織上衣（1件） 190元<br>
-    </form>
+   
+        </form>
+        
         <button onclick="shoppingInfo()"><h4>結帳</h4></button>
         <div id="demo"></div>
         <script>
@@ -38,16 +40,15 @@
                 var price = 0;
                 var text ="<h4>您的購物資訊如下：</h4>";
                 var i;
+                text += "<table border='1' width='90%' cellspacing='0' cellpadding='0'>";
+                
                 for(i=0; i<5; i++){
-                    <table border="1" width="90%" cellspacing="0" cellpadding="0">
+                   text += "<tr>";
 
                     switch(i){
-                        <tr>
                         case 0:
-                            <td> item ="姓名："</td>
-                            <td>name01</td>;
-                        break;
-                        </tr>
+                             item ="姓名：";
+                        break;  
                         case 1:
                             item ="收件住址：";
                             break;
@@ -61,22 +62,24 @@
                             item ="指定送貨日期：";
                             break;
                     }
-                    text += item +x.elements[i].value+"<br>";
+                     text += "<td>" + item + "</td>" + "<td>" + x.elements[i].value +"</td>";
+                     text += "</tr>";
                     }
-                for(i=5; i<=7; i++){
+                for(i=5; i<=9; i++){
                     if(x.elements[i].checked == true){
                         switch(i){
-                            case 6: price=190; break;
-                            case 7: price=390; break;
-                            case 8: price=190; break;
-                            case 9: price=490; break;
-                            case 10: price=190; break;
+                            case 5: price=190; break;
+                            case 6: price=390; break;
+                            case 7: price=190; break;
+                            case 8: price=490; break;
+                            case 9: price=190; break;
                         }
-                        text += "衣服種類：" + x.elements[i].value + "<br>";
-                        text += "價格合計：" + price + "元<br>";
-        </table>
+                        text += "<tr><td>衣服種類: </td>" + "<td>" + x.elements[i].value + "</td></tr>";
+                        text += "<tr><td>價格合計: </td>" + "<td>" + price + "元</td></tr>";
                     }
+                    text += "</tr>";
                 }
+                text += "</table>";
                 document.getElementById("demo").innerHTML=text;
             }
         </script>
