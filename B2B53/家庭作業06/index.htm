@@ -1,44 +1,326 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="UTF-8">
-		<title>課堂作業01</title>
-	<style>
-		div {
-			margin: 15px;
-			text-align: justify;
-			line-height: 30px;
-		}
-		h3 {
-			color: blue;
-		}
-		span {
-			color: red;
-			font-weight: bolder;
-		}
-	</style>
+	<meta charset="utf-8">
+
+	<title>AnythingSlider</title>
+	<link rel="shortcut icon" href="demos/images/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="demos/images/apple-touch-icon.png">
+
+	<!-- jQuery (required) -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+	<script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+
+	<!-- Syntax highlighting -->
+	<link rel="stylesheet" href="demos/prettify/prettify.css" media="screen">
+	<script src="demos/prettify/prettify.js"></script>
+
+	<!-- Anything Slider optional plugins -->
+	<script src="js/jquery.easing.1.2.js"></script>
+	<!-- http://ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js -->
+	<script src="js/swfobject.js"></script>
+
+	<!-- Demo stuff -->
+	<link rel="stylesheet" href="demos/css/page.css" media="screen">
+	<script src="demos/js/jquery.jatt.min.js"></script>
+
+	<!-- AnythingSlider -->
+	<link rel="stylesheet" href="css/anythingslider.css">
+	<script src="js/jquery.anythingslider.js"></script>
+
+	<!-- AnythingSlider video extension; optional, but needed to control video pause/play -->
+	<script src="js/jquery.anythingslider.video.js"></script>
+
+	<!-- Ideally, add the stylesheet(s) you are going to use here,
+	 otherwise they are loaded and appended to the <head> automatically and will over-ride the IE stylesheet below -->
+	<link rel="stylesheet" href="css/theme-metallic.css">
+	<link rel="stylesheet" href="css/theme-minimalist-round.css">
+	<link rel="stylesheet" href="css/theme-minimalist-square.css">
+	<link rel="stylesheet" href="css/theme-construction.css">
+	<link rel="stylesheet" href="css/theme-cs-portfolio.css">
+
+	<script>
+		// Demo functions
+		// **************
+		$(function(){
+
+			prettyPrint();
+
+			// External Link with callback function
+			$("#slide-jump").click(function(){
+				$('#slider2').anythingSlider(4, function(slider){ /* alert('Now on page ' + slider.currentPage); */ });
+				return false;
+			});
+
+			// External Link
+			$("a.muppet").click(function(){
+				$('#slider1').anythingSlider(5);
+				$(document).scrollTop(0); // make the page scroll to the top so you can watch the video
+				return false;
+			});
+
+			// Report Events to console & features list
+			$('#slider1, #slider2').bind('before_initialize initialized swf_completed slideshow_start slideshow_stop slideshow_paused slideshow_unpaused slide_init slide_begin slide_complete', function(e, slider){
+				// show object ID + event (e.g. "slider1: slide_begin")
+				var txt = slider.$el[0].id + ': ' + e.type + ', now on panel #' + slider.currentPage;
+				$('#status').text(txt);
+				if (window.console && window.console.firebug){ console.debug(txt); } // added window.console.firebug to make this work in Opera
+			});
+
+			// Theme Selector (This is really for demo purposes only)
+			var themes = ['minimalist-round','minimalist-square','metallic','construction','cs-portfolio'];
+			$('#currentTheme').change(function(){
+				var theme = $(this).val();
+				$('#slider1').closest('div.anythingSlider')
+					.removeClass( $.map(themes, function(t){ return 'anythingSlider-' + t; }).join(' ') )
+					.addClass('anythingSlider-' + theme);
+				$('#slider1').anythingSlider(); // update slider - needed to fix navigation tabs
+			});
+
+			// Add a slide
+			var imageNumber = 1;
+			$('button.add').click(function(){
+				$('#slider1')
+					.append('<li><img src="demos/images/slide-tele-' + (++imageNumber%2 + 1)  + '.jpg" alt="" /></li>')
+					.anythingSlider(); // update the slider
+			});
+			$('button.remove').click(function(){
+				$('#slider1 > li:not(.cloned):last').remove();
+				$('#slider1').anythingSlider(); // update the slider
+			});
+
+		});
+
+	</script>
+
+	<script>
+		// Set up Sliders
+		// **************
+		$(function(){
+
+			$('#slider1').anythingSlider({
+				theme           : 'metallic',
+				easing          : 'easeInOutBack',
+				navigationFormatter : function(index, panel){
+					return ['Slab', 'Parking Lot', 'Drive', 'Glorius Dawn', 'Bjork?', 'Traffic Circle'][index - 1];
+				},
+				onSlideComplete : function(slider){
+					// alert('Welcome to Slide #' + slider.currentPage);
+				}
+			});
+
+			$('#slider2').anythingSlider({
+				mode                : 'f',   // fade mode - new in v1.8!
+				resizeContents      : true, // If true, solitary images/objects in the panel will expand to fit the viewport
+				navigationSize      : 3,     // Set this to the maximum number of visible navigation tabs; false to disable
+				navigationFormatter : function(index, panel){ // Format navigation labels with text
+					return ['課堂02', '課堂03', '課堂04','課堂05','課堂07','課堂08','課堂09','課堂10','課堂11','課堂12'][index - 1];
+				},
+				onSlideBegin: function(e,slider) {
+					// keep the current navigation tab in view
+					slider.navWindow( slider.targetPage );
+				}
+			});
+
+			// tooltips for first demo
+			$.jatt();
+
+		});
+	</script>
 </head>
-	<body>
-        <h2>嘉賓果</h2>
-		<h3>長在樹幹上的葡萄</h3>
-		<div>
-			長相似葡萄，味道似葡萄，名字似葡萄，卻不是葡萄。披著紫色外衣的甚麼神秘的水果呢？答案是嘉賓果！嘉賓果(Jabuticaba)，除了有人叫它「樹葡萄」、「美味熱帶葡萄」，有一個非常美麗的別名──擬愛神木，是遠從中南美洲(巴西)而來的亞熱帶水果。
-		</div>
-		<div ><img src="pic01.jpg" width="400"></div>
-		<h3>古老的傳說與愛情</h3>
-		<div>
-			嘉賓果(Jabuticaba)在中南美洲不只是原產的特別水果，在巴西還流傳著一個關於嘉賓果的美麗傳說。在當地方言圖皮語中，
-			<span>Jabuti 是「烏龜」的意思，而 Caba 則指「地方」</span>，
-			這意味著將可在果樹附近找到烏龜。相傳勇猛善戰的圖皮人祖先曾所向披靡地征服附近的部落，卻因此熱惱了女巫師，將圖皮族聰慧美麗的女子變成沒有知覺、不會講話的果樹，深情的圖皮族戰士為了守護深愛的女子，終年守在果樹旁邊，隨著時間過去，勇猛的戰士變成行動緩慢的烏龜。戰士的深情感動了天神，天神賜予果樹能結出富含營養的果實，圖皮組的祖先相信，受到天神祝福的果樹，會保佑人們的愛情順遂、長久！
-		</div>
-		<div ><img src="pic02.jpg" width="400"></div>
-		<h3>嘉賓果樹成長的特色</h3>
-		<div>
-			嘉賓果最特別的地方就是「幹生花」，花與果實都是長在樹幹上的，嘉賓果開花時，整株樹幹開滿白色的小花，其壯麗不輸櫻花盛開的美景。花謝後，嘉賓果的果實就在樹幹上生長，像吹氣球一樣慢慢長大，還沒成熟時，翠綠色的果實很耀眼，但皮很厚籽很大顆；當樹葡萄慢慢成熟時，由綠轉紫，皮也慢慢變薄，籽越來越小顆，可以小到跟葡萄籽一樣，而且會非常甜。
-		</div>
-		<h3>資料來源:</h3>
-		<ul>
-			<li><a href="https://greenbox.tw/Home/BlogPostNew/5791" target="_blank">參考網址</a></li>
-		</ul>
-	</body>
+
+<body id="main">
+
+	<div id="page-wrap">
+		<h1 style="color: darkorange";>網頁設計作品回顧</h1>
+			<br><br>
+			<ul id="slider2">
+				<li class="panel1">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業02">
+							<img src="images/pic07.jpg" alt="pic07" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>設定項目符號與編號</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+							<ul>
+								<li>Javascript物件的概念</li>
+								<li>HTML表單的數字輸入</li>
+								<li>學習購物網站的介面設計</li>
+							</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+
+				<li class="panel2">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業03">
+								<img src="images/pic10.jpg" alt="pic10" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>設定表格</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>jQurey基礎入門</li>
+									<li>jQurey的事件與特效</li>
+									<li>練習形狀變化與位移</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+
+				<li class="panel3">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業04">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>盒子模型、外部字型</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel4">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業05">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>javascript入門</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel5">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業07">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>javascript物件應用</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel6">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業08">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>RegExp物件</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel7">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業09">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>RegExp物件進階</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel8">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業10">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>jQuery應用01</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel9">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業11">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>jQuery應用02</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+                <li class="panel10">
+					<div>
+						<div class="textSlide">
+							<a href="https://yu00119.github.io/B2B53/課堂作業12">
+								<img src="images/pic12.jpg" alt="pic12" style="float: right; margin: 0 0 2px 10px; width: 375px; height: 250px;" />
+							</a>
+							<h2 style="color: cornflowerblue";>12-skitter</h2>
+							<h3 style="color: cadetblue; font-weight:bold;">學習重點</h3>
+							<h3>
+								<ul>
+									<li>skitter套件應用</li>
+									<li>多樣的轉場變化應用</li>
+								</ul>
+							</h3>
+						</div>
+					</div>
+				</li>
+
+
+
+
+
+
+
+			</ul>
+			<!-- END AnythingSlider #2 -->
+
+		<br>
+	</div>
+</body>
 </html>
