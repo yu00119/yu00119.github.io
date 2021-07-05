@@ -3,6 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 		<title>自主學習01</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<style>
 		div {
 			margin: 15px;
@@ -39,8 +40,12 @@
 	</style>
 </head>
 	<body>
-        <h2>【夏日芒果大賞】</h2>
-        <h3>一次搞懂所有芒果品種</h3>
+        <div id="app">
+            {{message}}
+        </div>
+        
+         <script src="https://unpkg.com/vue@next"></script>
+        
 		<div><img src="images/8.jpg"  alt="images/8.jpg"></div>
 		<div>
 			住在寶島台灣，最幸福的事就是有好多芒果可以吃！ 但在芒芒果海中，要挑選哪一種芒果呢～ 今天來個【一張圖搞懂芒果品種】
@@ -51,8 +56,8 @@
         <tr>
             <th>品種</th>
             <th>
-            <div>
-                <img src="table_pic/pic01.jpg">
+            <div id="app01">
+                <img v-bind:src="srcName">
                 </div>
             </th>
             <th>
@@ -159,6 +164,25 @@
             1966年時，台灣的農民黃金煌先生花了八年時間，以凱特為父本、印度的懷特為母本雜交，選育出的芒果品種「金煌芒果」，有著凱特的碩大體型，以及懷特的細緻口感，且抗病性高，連總統蔣經國吃完後都讚不絕口，且金黃色的果皮煞是好看，果型碩大如木瓜，果肉不只細緻、纖維稀少，特別的口感也非常不錯。
         </div>
         <div><img src="images/15.jpg"  alt="images/15.jpg"></div>
+        
+        <script>
+        const vm = Vue.createApp({
+        data() {
+        return {
+        message:'【夏日芒果大賞】一次搞懂所有芒果品種'
+        }
+        }
+        });
+        const vm01 = Vue.createApp({
+        data(){
+        return{
+        srcName:"table_pic/pic01.jpg"
+        }
+        }
+        });
+        vm.mount('#app');
+        vm01.mount('#app01');
+        </script>
         
         
 		<h3>資料來源:</h3>
