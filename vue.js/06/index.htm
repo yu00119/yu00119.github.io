@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+		<title>自主學習02</title>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+	<style>
+        div {
+            font-size: 30px;
+            color: cadetblue;
+        }
+    </style>
+</head>
+	<body>
+        <div id="app">
+            {{message}}
+        </div>
+        
+         <script src="https://unpkg.com/vue@next"></script>
+        
+		
+        <script>
+        const vm = Vue.createApp({
+        data() {
+        return {
+        message:'今天要做很多事!'
+        }
+        }
+        });
+       
+        vm.mount('#app');
+       
+        </script>
+        
+        
+		
+	</body>
+</html>
