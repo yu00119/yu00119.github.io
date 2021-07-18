@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 		<title>自主學習08</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+     <script src="https://unpkg.com/vue@next"></script>
 	<style>
         p {
             color:darkseagreen;
@@ -46,18 +47,18 @@
             },
             usd:{
             get(){
-                return Number.parseFloat(Number(this.twd)*28).toFixed(3)
+                return Number.parseFloat(Number(this.twd)/28).toFixed(3)
         },
             set(val){
-            this.twd = Number.parseFloat(Number(val)/28).toFixed(3)
+            this.twd = Number.parseFloat(Number(val)*28).toFixed(3)
         }
         },
             gbp:{
                 get(){
-                    return Number.parseFloat(Number(this.twd)*38.55).toFixed(3)
+                    return Number.parseFloat(Number(this.twd)/38.55).toFixed(3)
                 },
                 set(val){
-                    this.twd = Number.parseFloat(Number(val)/38.55).toFixed(3)
+                    this.twd = Number.parseFloat(Number(val)*38.55).toFixed(3)
                 }
             }
             
