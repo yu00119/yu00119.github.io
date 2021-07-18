@@ -5,22 +5,21 @@
 		<title>自主學習09</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<style>
-        p {
+        div {
             font-size: 30px;
             color: cadetblue;
         }
         .error {
             border: red solid 1px;
-            color: firebrick;
+            color: red;
         }
     </style>
 </head>
 	<body>
         <div id="app">
-            <input type="text" v-model.trim="name" placeholder="account" v-bind:class="{'error':name.length > 12}">
+            <input type="text" v-model.trim="name" placeholder="account" v-bind:class="{'error':name.length > 12}"><br>
             <input type="text" v-model.trim="message" placeholder="password" v-bind:class="{'error':message.length > 12}">
-            <p>{{name}}</p>
-            <p>{{message}}</p>
+            
         </div>
         
          <script src="https://unpkg.com/vue@next"></script>
