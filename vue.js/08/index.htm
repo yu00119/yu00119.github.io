@@ -15,21 +15,24 @@
     </style>
 </head>
 	<body>
-        <div id="app01">
+        <div id="app">
             <p>匯率換算</p>
             <p>日幣=0.25台幣</p>
-            <div>台幣<input type="text" v-model="twd"></div>
-            <div>日幣<input type="text" v-model="jpy"></div>
+            <p>美元=28台幣</p>
+            <p>英鎊=38.55台幣</p>
+            <div>台幣<input type="text" v-model='twd'></div>
+            <div>日幣<input type="text" v-model='jpy'></div>
+            <div>美元<input type="text" v-model='usd'></div>
+            <div>英鎊<input type="text" v-model='gbp'></div>
         </div>
         
-         <script src="https://unpkg.com/vue@next"></script>
         
 		
         <script>
-        const vm01 = Vue.createApp({
+        const vm= Vue.createApp({
             data() {
                 return {
-                   twd:0.25
+                   twd:0.25,
                 }
             },
         computed:{
@@ -40,37 +43,31 @@
                 set(val){
                     this.twd = Number.parseFloat(Number(val)*0.25).toFixed(3);
                 }
-            }
+            },
+            usd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)*28).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)/28).toFixed(3)
         }
-        }).mount('#app01');
+        },
+            gbp:{
+                get(){
+                    return Number.parseFloat(Number(this.twd)*38.55).toFixed(3)
+                },
+                set(val){
+                    this.twd = Number.parseFloat(Number(val)/38.55).toFixed(3)
+                }
+            }
+            
+        },
+        }).mount('#app');
         
        
         </script>
         
-        <div id="app02">
-            <p>美元=28台幣</p>
-            <div>台幣<input type="text" v-model="twd"></div>
-            <div>美元<input type="text" v-model="usd"></div>
-         </div>
-        <script>
-             const vm02 = Vue.createApp({
-            data() {
-                return {
-                   twd:28
-                }
-            },
-         computed:{
-            usd:{
-            get(){
-            return Number.parseFloat(Number(this.twd)/28).toFixed(3);
-        }
-            set(val){
-            this.twd = Number.parseFloat(Number(val)*28).toFixed(3);
-        }
-        }
-            
-        }).mount('#app02');
-        </script>
+        
         
         
 		
