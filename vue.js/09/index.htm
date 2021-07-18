@@ -5,6 +5,9 @@
 		<title>自主學習09</title>
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 	<style>
+        p {
+            color: darkslateblue;
+        }
         div {
             font-size: 30px;
             color: cadetblue;
@@ -17,6 +20,7 @@
 </head>
 	<body>
         <div id="app">
+            <p>字打超過12個，字跟框會變紅色</p>
             <input type="text" v-model.trim="name" placeholder="account" v-bind:class="{'error':name.length > 12}"><br>
             <input type="text" v-model.trim="message" placeholder="password" v-bind:class="{'error':message.length > 12}">
             
