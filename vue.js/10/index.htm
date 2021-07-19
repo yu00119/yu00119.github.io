@@ -3,36 +3,152 @@
 <head>
 	<meta charset="UTF-8">
     <title>自主學習10</title>
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-	<style>
-        div {
-            font-size: 30px;
-            color: cadetblue;
-        }
-    </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    div {
+      font-size: 15px;
+      color: chocolate;
+      margin: 5px;
+    }
+      h2 {
+          color: burlywood;
+      }
+      p {
+          color: darkkhaki;
+      }
+
+    img {
+      width: 70%;
+    }
+
+    label {
+      margin-right: 0.5rem;
+    }
+  </style>
 </head>
-	<body>
-        <div id="app">
-            {{message}}
-        </div>
-        
-         <script src="https://unpkg.com/vue@next"></script>
-        
-		
-        <script>
-        const vm = Vue.createApp({
-        data() {
+
+<body>
+
+  <div id="app">
+    <h2>{{ message }}</h2>
+      <p >都是以大杯微糖微冰來比較</p>
+      <p>喜歡程度最高5分</p>
+
+    <form style="margin: 1rem 0">
+        <label>
+        <input type="checkbox" value="店名" v-model="checkName" >店名
+      </label>
+        <label>
+        <input type="checkbox" value="飲料名稱" v-model="checkName" >飲料名稱
+      </label>
+      <label>
+        <input type="checkbox" value="口感" v-model="checkName" >口感
+      </label>
+      <label>
+        <input type="checkbox" value="甜度" v-model="checkName" >甜度
+      </label>
+      <label>
+        <input type="checkbox" value="喜歡程度" v-model="checkName" >喜歡程度
+      </label>
+    </form>
+
+    <h2>想知道:{{ checkName.join(',') }}</h2>
+
+    <table border="1" width="70%" cellspacing="0" cellpadding="0">
+      <tr>
+        <th>店家</th>
+        <th v-for="m in drinks">
+          <div><img v-bind:src="m.cover" alt=""></div>
+        </th>
+      </tr>
+        <tr v-show="checkName.includes('店名')">
+        <th>店名</th>
+        <td v-for="m in drinks">
+          <div>{{ m.name01 }}</div>
+        </td>
+      </tr>
+        <tr v-show="checkName.includes('飲料名稱')">
+        <th>飲料名稱</th>
+        <td v-for="m in drinks">
+          <div>{{ m.name02 }}</div>
+        </td>
+      </tr>
+      <tr v-show="checkName.includes('口感')">
+        <th>口感</th>
+        <td v-for="m in drinks">
+          <div>{{ m.taste }}</div>
+        </td>
+      </tr>
+      <tr v-show="checkName.includes('甜度')">
+        <th>甜度</th>
+        <td v-for="m in drinks">
+          <div>{{ m.sweetness }}</div>
+        </td>
+      </tr>
+      <tr v-show="checkName.includes('喜歡程度')">
+        <th>喜歡程度</th>
+        <td v-for="m in drinks">
+          <div>{{ m.like }}</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <script>
+    const vm = Vue.createApp({
+      data() {
         return {
-        message:'今天要做很多事!'
-        }
-        }
-        });
-       
-        vm.mount('#app');
-       
-        </script>
-        
-        
-		
-	</body>
+          drinks: [
+            {
+              cover: "table_pic/pic01.jpg",
+              name01:"清心福全",
+              name02:"珍珠鮮奶茶",
+              taste: "細緻肉厚",
+              sweetness: "高",
+              like: "4.5",
+            },
+            {
+              cover: "table_pic/pic02.jpg",
+              name01:"龜記",
+              name02:"翡翠鮮乳+珍珠",
+              taste: "細緻多汁",
+              sweetness: "清爽甜",
+              like: "5",
+            },
+            {
+              cover: "table_pic/pic03.jpg",
+              name01:"50嵐",
+              name02:"綠茶拿鐵+波霸",
+              taste: "Q彈紮實",
+              sweetness: "高",
+              like: "2.5",
+            },
+            {
+              cover: "table_pic/pic04.jpg",
+              name01:"迷客夏",
+              name02:"茉香綠茶拿鐵+珍珠",
+              taste: "綿密細緻",
+              sweetness: "超高",
+              like: "4.5",
+            },
+            {
+              cover: "table_pic/pic05.jpg",
+              name01:"李記紅茶冰",
+              name02:"玉露鮮奶茶+QQ",
+              taste: "細緻肉厚",
+              sweetness: "高",
+              like: "3.8",
+            },
+          ],
+          message: "我喜歡的飲料大PK!",
+          checkName: [],
+        };
+      },
+    });
+
+   
+    vm.mount('#app');
+  </script>
+</body>
 </html>
