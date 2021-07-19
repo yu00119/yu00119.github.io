@@ -33,7 +33,7 @@
   <div id="app">
     <h2>{{ message }}</h2>
       <p>前情提要:</p>
-      <p >※都是以大杯微糖微冰來比較</p>
+      <p >※都是以大杯微糖(3分)微冰來比較</p>
       <p>※喜歡程度最高5分</p>
       <p>※只是以比較喜歡的飲料來做比較，分數低的不代表不好喝!!!</p>
 
@@ -45,7 +45,7 @@
         <input type="checkbox" value="飲料名稱" v-model="checkName" >飲料名稱
       </label>
       <label>
-        <input type="checkbox" value="口感" v-model="checkName" >口感
+        <input type="checkbox" value="評價" v-model="checkName" >我的評價
       </label>
       <label>
         <input type="checkbox" value="甜度" v-model="checkName" >甜度
@@ -76,8 +76,8 @@
           <div>{{ m.name02 }}</div>
         </td>
       </tr>
-      <tr v-show="checkName.includes('口感')">
-        <th>口感</th>
+      <tr v-show="checkName.includes('評價')">
+        <th>評價</th>
         <td v-for="m in drinks">
           <div>{{ m.taste }}</div>
         </td>
@@ -107,40 +107,40 @@
               cover: "images/01.JPG",
               name01:"清心福全",
               name02:"珍珠鮮奶茶",
-              taste: "細緻肉厚",
-              sweetness: "高",
-              like: "4.5",
+              taste: "喝完不會像他牌奶茶一樣有一層膜的感覺，是我唯一會喝鮮奶茶的店",
+              sweetness: "2",
+              like: "4.8",
             },
             {
               cover: "images/04.png",
               name01:"龜記",
               name02:"翡翠鮮乳+珍珠",
-              taste: "細緻多汁",
-              sweetness: "清爽甜",
+              taste: "清爽順口，不知道還有甚麼可以評價的，反正就是很好喝",
+              sweetness: "2",
               like: "5",
             },
             {
               cover: "images/05.png",
               name01:"50嵐",
               name02:"綠茶拿鐵+波霸",
-              taste: "Q彈紮實",
-              sweetness: "高",
+              taste: "比較清淡，奶香跟茶香我覺得是這5個裡面最淡的",
+              sweetness: "3.2",
               like: "2.5",
             },
             {
               cover: "images/03.JPG",
               name01:"迷客夏",
               name02:"茉香綠茶拿鐵+珍珠",
-              taste: "綿密細緻",
-              sweetness: "超高",
+              taste: "奶香比較重的",
+              sweetness: "3",
               like: "4.5",
             },
             {
               cover: "images/02.png",
               name01:"李記紅茶冰",
               name02:"玉露鮮奶茶+QQ",
-              taste: "細緻肉厚",
-              sweetness: "高",
+              taste: "跟50嵐的口感差不多，但是這家的珍珠比較好吃，比較Q",
+              sweetness: "2.5",
               like: "3.8",
             },
           ],
