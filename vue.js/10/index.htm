@@ -32,8 +32,10 @@
 
   <div id="app">
     <h2>{{ message }}</h2>
-      <p >都是以大杯微糖微冰來比較</p>
-      <p>喜歡程度最高5分</p>
+      <p>前情提要:</p>
+      <p >※都是以大杯微糖微冰來比較</p>
+      <p>※喜歡程度最高5分</p>
+      <p>※只是以比較喜歡的飲料來做比較，分數低的不代表不好喝!!!</p>
 
     <form style="margin: 1rem 0">
         <label>
@@ -93,6 +95,7 @@
         </td>
       </tr>
     </table>
+      <p>圖片僅供參考</p>
   </div>
 
   <script>
@@ -101,7 +104,7 @@
         return {
           drinks: [
             {
-              cover: "table_pic/pic01.jpg",
+              cover: "images/01.JPG",
               name01:"清心福全",
               name02:"珍珠鮮奶茶",
               taste: "細緻肉厚",
@@ -109,7 +112,7 @@
               like: "4.5",
             },
             {
-              cover: "table_pic/pic02.jpg",
+              cover: "images/04.png",
               name01:"龜記",
               name02:"翡翠鮮乳+珍珠",
               taste: "細緻多汁",
@@ -117,7 +120,7 @@
               like: "5",
             },
             {
-              cover: "table_pic/pic03.jpg",
+              cover: "images/05.png",
               name01:"50嵐",
               name02:"綠茶拿鐵+波霸",
               taste: "Q彈紮實",
@@ -125,7 +128,7 @@
               like: "2.5",
             },
             {
-              cover: "table_pic/pic04.jpg",
+              cover: "images/03.JPG",
               name01:"迷客夏",
               name02:"茉香綠茶拿鐵+珍珠",
               taste: "綿密細緻",
@@ -133,7 +136,7 @@
               like: "4.5",
             },
             {
-              cover: "table_pic/pic05.jpg",
+              cover: "images/02.png",
               name01:"李記紅茶冰",
               name02:"玉露鮮奶茶+QQ",
               taste: "細緻肉厚",
@@ -146,9 +149,11 @@
         };
       },
     });
+      
 
    
     vm.mount('#app');
+      
   </script>
 </body>
 </html>
