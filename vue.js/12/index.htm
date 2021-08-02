@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習10</title>
+    <title>自主學習12</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
@@ -12,17 +12,15 @@
       margin: 5px;
     }
       h2 {
-          color: darkcyan;
-      }
-      p {
           color: darkkhaki;
       }
-
-    img {
-      width: 70%;
-    }
-
-    label {
+      h3 {
+          color: darkgrey;
+      }
+      p {
+          color: darkcyan ;
+      }
+      label {
       margin-right: 0.5rem;
     }
   </style>
@@ -31,30 +29,43 @@
 <body>
 
   <div id="app">
-      <h2>現在幾歲?</h2>
-      <input type="radio" id="18以下" value="18以下" v-model="ages">
-      <label for="18以下">18以下</label>
-      <input type="radio" id="18~25" value="18~25" v-model="ages">
-      <label for="18~25">18~25</label>
-      <input type="radio" id="25~35" value="25~35" v-model="ages">
-      <label for="25~35">25~35</label>
-      <input type="radio" id="35~45" value="35~45" v-model="ages">
-      <label for="35~45">35~45</label>
-      <input type="radio" id="45~55" value="45~55" v-model="ages">
-      <label for="45~55">45~55</label>
-      <input type="radio" id="55~65" value="55~65" v-model="ages">
-      <label for="55~65">55~65</label>
-      <input type="radio" id="65以上" value="65以上" v-model="ages">
-      <label for="65以上">65以上</label>
+      <h2>本身性別?</h2>
+      <input type="radio" id="男" value="男" v-model="gender">
+      <label for="男">男</label>
+       <input type="radio" id="女" value="女" v-model="gender">
+      <label for="女">女</label>
       <br>
-      <p>{{ ages }}</p>
+      <p>{{ gender }}</p>
+      <h2>希望另一伴有哪些條件?</h2>
+      <input type="checkbox" id="好看" value="好看" v-model="like">
+      <label for="好看">好看</label>
+      <input type="checkbox" id="普通" value="普通" v-model="like">
+      <label for="普通">普通</label>
+      <input type="checkbox" id="高" value="高" v-model="like">
+      <label for="高">高</label>
+      <input type="checkbox" id="矮" value="矮" v-model="like">
+      <label for="矮">矮</label>
+      <input type="checkbox" id="胖" value="胖" v-model="like">
+      <label for="胖">胖</label>
+      <input type="checkbox" id="微肉" value="微肉" v-model="like">
+      <label for="微肉">微肉</label>
+      <input type="checkbox" id="瘦" value="瘦" v-model="like">
+      <label for="瘦">瘦</label>
+      <input type="checkbox" id="有才華" value="有才華" v-model="like">
+      <label for="有才華">有才華</label>
+      <input type="checkbox" id="有上進心" value="有上進心" v-model="like">
+      <label for="有上進心">有上進心</label>
+      <br>
+      <p>{{ like }}</p>
+      <h3>(上面是單選，下面是多選)</h3>
     </div>
     
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-            ages:""
+            gender:"",
+            like:[],
         }
       }
     });
