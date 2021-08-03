@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習12</title>
+    <title>自主學習13</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
@@ -11,61 +11,33 @@
       color: chocolate;
       margin: 5px;
     }
-      h2 {
-          color: darkkhaki;
-      }
-      h3 {
-          color: darkgrey;
-      }
       p {
           color: darkcyan ;
       }
-      label {
-      margin-right: 0.5rem;
-    }
+      option {
+          color: darkkhaki;
+      }
   </style>
 </head>
 
 <body>
 
   <div id="app">
-      <h2>本身性別?</h2>
-      <input type="radio" id="男" value="男" v-model="gender">
-      <label for="男">男</label>
-       <input type="radio" id="女" value="女" v-model="gender">
-      <label for="女">女</label>
-      <br>
-      <p>{{ gender }}</p>
-      <h2>希望另一伴有哪些條件?</h2>
-      <input type="checkbox" id="好看" value="好看" v-model="like">
-      <label for="好看">好看</label>
-      <input type="checkbox" id="普通" value="普通" v-model="like">
-      <label for="普通">普通</label>
-      <input type="checkbox" id="高" value="高" v-model="like">
-      <label for="高">高</label>
-      <input type="checkbox" id="矮" value="矮" v-model="like">
-      <label for="矮">矮</label>
-      <input type="checkbox" id="胖" value="胖" v-model="like">
-      <label for="胖">胖</label>
-      <input type="checkbox" id="微肉" value="微肉" v-model="like">
-      <label for="微肉">微肉</label>
-      <input type="checkbox" id="瘦" value="瘦" v-model="like">
-      <label for="瘦">瘦</label>
-      <input type="checkbox" id="有才華" value="有才華" v-model="like">
-      <label for="有才華">有才華</label>
-      <input type="checkbox" id="有上進心" value="有上進心" v-model="like">
-      <label for="有上進心">有上進心</label>
-      <br>
-      <p>{{ like }}</p>
-      <h3>(上面是單選，下面是多選)</h3>
+      <select v-model="selected">
+          <option disabled value="">請選擇</option>
+          <option value="大一">大一</option>
+          <option value="大二">大二</option>
+          <option value="大三">大三</option>
+          <option value="大四">大四</option>
+      </select>
+      <p>我現在已經{{ selected || '' }}了</p>
     </div>
     
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-            gender:"",
-            like:[],
+            selected:''
         }
       }
     });
