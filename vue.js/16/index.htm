@@ -2,50 +2,76 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習13</title>
+    <title>自主學習16</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
-    div {
-      font-size: 15px;
-      color: chocolate;
-      margin: 5px;
+    form {
+      color: darkseagreen;
+      font-weight: bold;
     }
-      p {
-          color: darkcyan ;
-      }
-      option {
-          color: darkkhaki;
-      }
+    p {
+      color: darkorange;
+      font-weight: bold;
+    }
+    span {
+      color: cornflowerblue;
+      font-weight: bold;
+        font-size: 30px;
+    }
   </style>
 </head>
-
 <body>
+<div id="app">
+    <p><span>保養品特價組合，訂購資訊如下</span></p>
+  <form>
+    姓名: <input v-model="name" placeholder="name"><br>
+    住址: <input v-model="address" placeholder="address"><br>
+    手機: <input v-model="phone" placeholder="phone number"><br>
+    電子郵件: <input v-model="email" placeholder="email"><br>
+    指定送貨日期: <input type="date" v-model="date"><br>
+    L’OCCITANE 歐舒丹 人氣香氛三入禮盒組 839元，購買數量: <input type="number" v-model="number01"><br>
+    Avene雅漾 舒護活泉水隨身保水組 499元，購買數量: <input type="number" v-model="number02"><br>
+    LOREAL Paris 巴黎萊雅 活力緊緻積雪草2入組 1099元，購買數量: <input type="number" v-model="number03"><br>
+    </form>
+    <p>姓名:{{ name }}</p>
+    <p>收件住址:{{ address }}</p>
+    <p>電話:{{ phone }}</p>
+    <p>電子郵件:{{ email }}</p>
+    <p>指定送貨日期:{{ date }}</p>
+    <p>L’OCCITANE 歐舒丹 人氣香氛三入禮盒組 839元 共 {{ number01 }}單位，金額小計{{subtotal(839)}}元</p>
+    <p>Avene雅漾 舒護活泉水隨身保水組 499元 共 {{ number02 }}單位，金額小計{{subtotal(499)}}元</p>
+    <p>LOREAL Paris 巴黎萊雅 活力緊緻積雪草2入組 1099元 共 {{ number03 }}單位，金額小計{{subtotal(1099)}}元</p>
+    <p>總計: {{ totalAmount()}} 元</p>
+</div>
 
-  <div id="app">
-      <select v-model="selected">
-          <option disabled value="">請選擇</option>
-          <option value="大一">大一</option>
-          <option value="大二">大二</option>
-          <option value="大三">大三</option>
-          <option value="大四">大四</option>
-      </select>
-      <p>我現在已經{{ selected || '' }}了</p>
-    </div>
-    
-  <script>
-    const vm = Vue.createApp({
-      data() {
-        return {
-            selected:''
-        }
+<script>
+  const vm = Vue.createApp ({
+    data() {
+      return {
+        name: '',
+        address: '',
+        phone: '',
+        email: '',
+        date: '',
+        number01: 0,
+        number02: 0,
+        number03: 0
       }
-    });
-      
-
-   
-    vm.mount('#app');
-      
-  </script>
-</body>
+    },
+    methods: {
+      subtotal: function(price){
+        switch(price){
+          case 839:return price * this.number01;break;
+          case 499:return price * this.number02;break;
+          case 1099:return price * this.number03;break;
+        }
+      },
+        totalAmount:function(){
+        return this.subtotal(839) + this.subtotal(499) + this.subtotal(1099);
+      }
+    }
+  }).mount('#app');
+    </script>
+    </body>
 </html>
