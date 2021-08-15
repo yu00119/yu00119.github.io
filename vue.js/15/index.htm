@@ -6,23 +6,33 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
  <style>
-     n {
-         color: cornflowerblue,
+     p {
+         color: cornflowerblue;
+     }
+     div {
+         color: cadetblue;
      }
     </style>
 </head>
 
 <body>  
-    <div id="app">  
-        <div id="range">  
-            <p v-for="n in 50">{{ n }}</p> 
-        </div>  
-    </div>
+    <div id="app">
+        <p>多少個有多少大卡</p>
+        <div>數量:<input type="text" v-model="quantity" placeholder="數量"></div>
+        <div>大卡:<input type="text" v-model="cal" placeholder="大卡"></div>
+        <p>總共{{ quantity * cal }}大卡</p>
+        </div>
+    <script>
+        const vm = Vue.createApp ({
+            data(){
+                return {
+                    quantity:'',
+                    cal:'',
+                }
+            }
+        }).mount('#app');
+  
     
-    <script>  
-        const vm = Vue.createApp({
-            
-        }).mount("#app");  
     </script>  
     </body>
 </html>
