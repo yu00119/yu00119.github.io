@@ -2,50 +2,27 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習13</title>
+    <title>自主學習15</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
-  <style>
-    div {
-      font-size: 15px;
-      color: chocolate;
-      margin: 5px;
-    }
-      p {
-          color: darkcyan ;
-      }
-      option {
-          color: darkkhaki;
-      }
-  </style>
+ <style>
+     n {
+         color: cornflowerblue,
+     }
+    </style>
 </head>
 
-<body>
-
-  <div id="app">
-      <select v-model="selected">
-          <option disabled value="">請選擇</option>
-          <option value="大一">大一</option>
-          <option value="大二">大二</option>
-          <option value="大三">大三</option>
-          <option value="大四">大四</option>
-      </select>
-      <p>我現在已經{{ selected || '' }}了</p>
+<body>  
+    <div id="app">  
+        <div id="range">  
+            <p v-for="n in 50">{{ n }}</p> 
+        </div>  
     </div>
     
-  <script>
-    const vm = Vue.createApp({
-      data() {
-        return {
-            selected:''
-        }
-      }
-    });
-      
-
-   
-    vm.mount('#app');
-      
-  </script>
-</body>
+    <script>  
+        const vm = Vue.createApp({
+            
+        }).mount("#app");  
+    </script>  
+    </body>
 </html>
