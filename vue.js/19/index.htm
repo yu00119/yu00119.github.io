@@ -11,33 +11,38 @@
       color: chocolate;
       margin: 5px;
     }
-      p {
-          color: darkcyan ;
-      }
-      option {
-          color: darkkhaki;
-      }
+    p {
+      font-size: 15px;
+      color:darkblue;
+      margin: 5px;
+    }
   </style>
 </head>
 
 <body>
 
   <div id="app">
-      <select v-model="selected">
-          <option disabled value="">請選擇</option>
-          <option value="大一">大一</option>
-          <option value="大二">大二</option>
-          <option value="大三">大三</option>
-          <option value="大四">大四</option>
-      </select>
-      <p>我現在已經{{ selected || '' }}了</p>
+      <p>這三個裡面，都有不太一樣的地方</p>
+     <ul>
+      <li v-for="val in book">{{ val }}</li>
+      </ul>
+      <ul>
+      <li v-for="(val, key) in book">{{ key }} / {{ val }}</li>
+      </ul>
+      <ul>
+      <li v-for="(val, key, index) in book">{{ index }} / {{ key }} / {{ val }}</li>
+      </ul>
     </div>
     
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-            selected:''
+            book: {
+                title:'第八週自主學習',
+                timing:'12:59am',
+                publishedAt:'2021/8/23'
+            }
         }
       }
     });
