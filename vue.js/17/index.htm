@@ -2,20 +2,21 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習13</title>
+    <title>自主學習17</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
     div {
-      font-size: 15px;
-      color: chocolate;
-      margin: 5px;
+      color: cornflowerblue;
     }
-      p {
-          color: darkcyan ;
+      li {
+          color:darkolivegreen ;
       }
-      option {
-          color: darkkhaki;
+      h1 {
+          color: dimgray;
+      }
+      span {
+          color:forestgreen;
       }
   </style>
 </head>
@@ -23,21 +24,18 @@
 <body>
 
   <div id="app">
-      <select v-model="selected">
-          <option disabled value="">請選擇</option>
-          <option value="大一">大一</option>
-          <option value="大二">大二</option>
-          <option value="大三">大三</option>
-          <option value="大四">大四</option>
-      </select>
-      <p>我現在已經{{ selected || '' }}了</p>
+      <div>Vue.js的目錄</div>
+      <ul>
+      <li v-for="item in arr">{{ item }}</li>
+      </ul>
+      <h1>參考資料: { <span>|</span> 重新認識Vue.js <span>|</span> 008天絕對看不完的Vue.js<span>3</span>指南</h1>
     </div>
     
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-            selected:''
+            arr: ['Vue.js簡介','Vue.js元件系統','Vue單一元件檔與VueCLI','Vue Router與前端路由管理','Vue與狀態管理','Code Reuse與Vue Composition API','附錄']
         }
       }
     });
