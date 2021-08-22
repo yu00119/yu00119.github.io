@@ -6,17 +6,25 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
-    div {
-      color: cornflowerblue;
+    h2 {
+        font-size: 15px;
+        color: cornflowerblue;
+        margin: 5px;
     }
-      li {
-          color:darkolivegreen ;
-      }
-      h1 {
-          color: dimgray;
-      }
-      span {
-          color:forestgreen;
+    li {
+        font-size: 15px;
+        color:darkolivegreen ;
+        margin: 5px;
+    }
+    h1 {
+        font-size: 15px;
+        color: dimgray;
+        margin: 5px;
+    }
+    span {
+        font-size: 15px;
+        color:forestgreen;
+        margin: 5px; 
       }
   </style>
 </head>
@@ -24,11 +32,11 @@
 <body>
 
   <div id="app">
-      <div>Vue.js的目錄</div>
+      <h2>Vue.js的目錄</h2>
       <ul>
       <li v-for="item in arr">{{ item }}</li>
       </ul>
-      <h1>參考資料: { <span>|</span> 重新認識Vue.js <span>|</span> 008天絕對看不完的Vue.js<span>3</span>指南</h1>
+      <h1>參考資料: { <span>|</span> 重新認識Vue.js <span>|</span> 008天絕對看不完的Vue.js<span>3</span>指南}</h1>
     </div>
     
   <script>
