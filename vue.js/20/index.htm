@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-    <title>自主學習13</title>
+    <title>自主學習20</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <script src="https://unpkg.com/vue@next"></script>
   <style>
@@ -23,21 +23,25 @@
 <body>
 
   <div id="app">
-      <select v-model="selected">
+  <select v-model="selected02">
           <option disabled value="">請選擇</option>
-          <option value="大一">大一</option>
-          <option value="大二">大二</option>
-          <option value="大三">大三</option>
-          <option value="大四">大四</option>
+          <option value="美元">美元 USD</option>
+          <option value="港幣">港幣 HKD</option>
+          <option value="英鎊">英鎊 GBP</option>
+          <option value="澳幣">澳幣 AUD</option>
+          <option value="加拿大幣">加拿大幣 CAD</option>
+          <option value="新加坡幣">新加坡幣 SGD</option>
+          <option value="瑞士法郎">瑞士法郎 CHF</option>
+          <option value="日圓">日圓 JPY</option>
       </select>
-      <p>我現在已經{{ selected || '' }}了</p>
+      <p>資料來源：https://tw.stock.yahoo.com/currency-converter</p>
     </div>
     
   <script>
     const vm = Vue.createApp({
       data() {
         return {
-            selected:''
+            selected02:''
         }
       }
     });
@@ -45,6 +49,8 @@
 
    
     vm.mount('#app');
+      
+     
       
   </script>
 </body>
