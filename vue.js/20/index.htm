@@ -34,25 +34,50 @@
       <h2>匯率換算</h2>
       <select v-model="selected01">
           <option disabled value="">請選擇</option>
-          <option value="台幣">台幣 TWD</option>
+          <option v-model='twd' value="台幣">台幣 TWD</option>
       </select>
       <h3>⇅</h3>
   <select v-model="selected02">
           <option disabled value="">請選擇</option>
-          <option value="美元">美元 USD</option>
-          <option value="港幣">港幣 HKD</option>
-          <option value="英鎊">英鎊 GBP</option>
-          <option value="澳幣">澳幣 AUD</option>
-          <option value="加拿大幣">加拿大幣 CAD</option>
-          <option value="新加坡幣">新加坡幣 SGD</option>
-          <option value="瑞士法郎">瑞士法郎 CHF</option>
-          <option value="日圓">日圓 JPY</option>
-          <option value="瑞典克朗">瑞典克朗 SEK</option>
-          <option value="紐西蘭幣">紐西蘭幣 NZD</option>
-          <option value="泰銖">泰銖 THB</option>
-          <option value="菲律賓披索">菲律賓披索 PHP</option>
-          <option value="印尼盾">印尼盾 IDR</option>
-      </select>
+          <option v-model='jpy' value="日圓">日圓 JPY</option>
+          <option v-model='usd' value="美元">美元 USD</option>
+          <option v-model='hkd' value="港幣">港幣 HKD</option>
+          <option v-model='gbp' value="英鎊">英鎊 GBP</option>
+          <option v-model='aud' value="澳幣">澳幣 AUD</option>
+          <option v-model='thb' value="泰銖">泰銖 THB</option>
+          <option v-model='eur' value="歐元">歐元 EUR</option>
+          <option v-model='krw' value="韓圜">韓圜 KRW</option>
+          <option v-model='vnd' value="越南幣">越南幣 VND</option>
+          <option v-model='idr' value="印尼盾">印尼盾 IDR</option>
+          <option v-model='cny' value="人民幣">人民幣 CNY</option>
+          <option v-model='cad' value="加拿大幣">加拿大幣 CAD</option>
+          <option v-model='sgd' value="新加坡幣">新加坡幣 SGD</option>
+          <option v-model='chf' value="瑞士法郎">瑞士法郎 CHF</option>
+          <option v-model='sek' value="瑞典克朗">瑞典克朗 SEK</option>
+          <option v-model='nzd' value="紐西蘭幣">紐西蘭幣 NZD</option>
+          <option v-model='php' value="菲律賓披索">菲律賓披索 PHP</option>
+          <option v-model='myr' value="馬來西亞幣">馬來西亞幣 MYR</option>
+  </select>
+      <div>台幣<input type="text" v-model='twd'></div>
+      <div>日圓<input type="text" v-model='jpy'></div>
+      <div>美元<input type="text" v-model='usd'></div>
+      <div>英鎊<input type="text" v-model='gbp'></div>
+      <div>港幣<input type="text" v-model='hkd'></div>
+      <div>澳幣<input type="text" v-model='aud'></div>
+      <div>泰銖<input type="text" v-model='thb'></div>
+      <div>歐元<input type="text" v-model='eur'></div>
+      <div>韓圜<input type="text" v-model='krw'></div>
+      <div>越南幣<input type="text" v-model='vnd'></div>
+      <div>印尼盾<input type="text" v-model='idr'></div>
+      <div>人民幣<input type="text" v-model='cny'></div>
+      <div>加拿大幣<input type="text" v-model='cad'></div>
+      <div>新加坡幣<input type="text" v-model='sgd'></div>
+      <div>瑞士法郎<input type="text" v-model='chf'></div>
+      <div>瑞典克朗<input type="text" v-model='sek'></div>
+      <div>紐西蘭幣<input type="text" v-model='nzd'></div>
+      <div>菲律賓披索<input type="text" v-model='php'></div>
+      <div>馬來西亞幣<input type="text" v-model='myr'></div>
+            
       <p>資料來源：https://tw.stock.yahoo.com/currency-converter</p>
     </div>
     
@@ -61,14 +86,159 @@
       data() {
         return {
             selected01:'',
-            selected02:''
+            selected02:'',
+            twd:0.25,
         }
-      }
-    });
-      
-
-   
-    vm.mount('#app');
+      },
+         computed:{
+            jpy:{
+                get(){
+                    return Number.parseFloat(Number(this.twd)/0.26).toFixed(3);
+                },
+                set(val){
+                    this.twd = Number.parseFloat(Number(val)*0.26).toFixed(3);
+                }
+            },
+              hkd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/3.6).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*3.6).toFixed(3)
+        }
+        },
+             usd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/28).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*28).toFixed(3)
+        }
+        },
+             aud:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/20.7).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*20.7).toFixed(3)
+        }
+        },
+             cad:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/22.47).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*22.47).toFixed(3)
+        }
+        },
+             sgd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/20.98).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*20.98).toFixed(3)
+        }
+        },
+             chf:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/30.71).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*30.71).toFixed(3)
+        }
+        },
+             sek:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/3.36).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*3.36).toFixed(3)
+        }
+        },
+             nzd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/19.95).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*19.95).toFixed(3)
+        }
+        },
+             thb:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/0.92).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*0.92).toFixed(3)
+        }
+        },
+             php:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/0.617).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*0.617).toFixed(3)
+        }
+        },
+            idr:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/0.0023).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*0.0023).toFixed(3)
+        }
+        },
+            gbp:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/39.19).toFixed(3)
+        },
+            set(val){
+                this.twd = Number.parseFloat(Number(val)*39.19).toFixed(3)
+        }
+        },
+             eur:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/33.33).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*33.33).toFixed(3)
+        }
+        },
+            krw:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/0.0261).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*0.0261).toFixed(3)
+        }
+        },
+             myr:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/7.14).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*7.14).toFixed(3)
+        }
+        },
+             vnd:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/0.0014).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*0.0014).toFixed(3)
+        }
+        },
+             cny:{
+            get(){
+                return Number.parseFloat(Number(this.twd)/4.36).toFixed(3)
+        },
+            set(val){
+            this.twd = Number.parseFloat(Number(val)*4.36).toFixed(3)
+        }
+        },
+                             
+        },
+        }).mount('#app');
+    
       
      
       
