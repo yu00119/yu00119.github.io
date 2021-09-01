@@ -37,13 +37,13 @@ const vm = Vue.createApp({
      computed:{
           con: function(){
           if(this.selected =='usd'){
-                this.res = "美金：" + Math.floor(this.twd / 33.76)
+                this.res = "美金：" + Math.floor(this.twd / 28)
                 }
               else if(this.selected =='jpy'){
-                  this.res = "日圓：" + Math.floor(this.twd / 0.2743) 
+                  this.res = "日圓：" + Math.floor(this.twd / 0.26) 
                }
          else if(this.selected =='gbp'){
-                this.res = "英鎊：" + Math.floor(this.twd / 39.76)
+                this.res = "英鎊：" + Math.floor(this.twd / 39.19)
                }
           },
      },
