@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+    <title>自主學習20</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    div {
+      font-size: 30px;
+      color: chocolate;
+      margin: 5px;
+    }
+     option {
+          color: darkkhaki;
+      }
+      h2 {
+          color: brown;
+      }
+      h3 {
+          font-size: 20px;
+          color: darksalmon;
+          }
+      a {
+          font-size: 15px;
+          color: burlywood;
+      }
+  </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>匯率換算</h2>
+    <div>台幣：<input type="text" id="twd" v-model="twd"></div>
+
+<select v-model="selected" >
+    <option disabled value="">請選擇</option>
+          <option value="twd">台幣 TWD</option>
+          <option value="jpy">日圓 JPY</option>
+          <option value="usd">美元 USD</option>
+          <option value="hkd">港幣 HKD</option>
+          <option value="gbp">英鎊 GBP</option>
+          <option value="aud">澳幣 AUD</option>
+          <option value="thb">泰銖 THB</option>
+          <option value="eur">歐元 EUR</option>
+          <option value="krw">韓圜 KRW</option>
+          <option value="vnd">越南幣 VND</option>
+          <option value="idr">印尼盾 IDR</option>
+          <option value="cny">人民幣 CNY</option>
+          <option value="cad">加拿大幣 CAD</option>
+          <option value="sgd">新加坡幣 SGD</option>
+          <option value="chf">瑞士法郎 CHF</option>
+          <option value="sek">瑞典克朗 SEK</option>
+          <option value="nzd">紐西蘭幣 NZD</option>
+          <option value="php">菲律賓披索 PHP</option>
+          <option value="myr">馬來西亞幣 MYR</option>
+</select>
+
+<input type="button" id="Conversion" value="轉換" v-on:click="con()"><br>
+<label id="res" >{{res}}</label>
+<h3>資料來源:</h3>
+		<ul>
+			<li><a href="https://tw.stock.yahoo.com/currency-converter" target="_blank">參考網址1</a></li>
+            <li><a href="https://dotblogs.com.tw/blackcat6727/2017/07/21/175119" target="_blank">參考網址2</a></li>
+		</ul>     
+    </div>   
+    <script>
+const vm = Vue.createApp({
+     data(){
+         return {
+         twd:0.25,
+         res:'',
+         selected:'',
+         option: [
+            'usd','gbp','jpy','hkd','aud','thb','eur','krw','vnd','idr','cny','cad','sgd','chf','sek','nzd','php','myr'
+        ]
+     };
+     },
+     computed:{
+          con: function(){
+          if(this.selected =='usd'){
+                this.res = "美金：" + Math.floor(this.twd / 28)
+                }
+              else if(this.selected =='jpy'){
+                  this.res = "日圓：" + Math.floor(this.twd / 0.26) 
+               }
+              else if(this.selected =='gbp'){
+                this.res = "英鎊：" + Math.floor(this.twd / 39.19)
+               }
+              else if(this.selected =='hkd'){
+                  this.res = "港幣：" + Math.floor(this.twd / 3.6) 
+               } 
+              else if(this.selected =='aud'){
+                  this.res = "澳幣：" + Math.floor(this.twd / 20.7) 
+               }
+               else if(this.selected =='thb'){
+                  this.res = "泰銖：" + Math.floor(this.twd / 0.92) 
+               }
+               else if(this.selected =='eur'){
+                  this.res = "歐元：" + Math.floor(this.twd / 33.33) 
+               }
+               else if(this.selected =='krw'){
+                  this.res = "韓圜：" + Math.floor(this.twd / 0.0261) 
+               }
+               else if(this.selected =='vnd'){
+                  this.res = "越南幣：" + Math.floor(this.twd / 0.0014) 
+               }
+               else if(this.selected =='idr'){
+                  this.res = "印尼盾：" + Math.floor(this.twd / 0.0023) 
+               }
+               else if(this.selected =='cny'){
+                  this.res = "人民幣：" + Math.floor(this.twd / 4.36) 
+               }
+               else if(this.selected =='cad'){
+                  this.res = "加拿大幣：" + Math.floor(this.twd / 22.47) 
+               }
+               else if(this.selected =='sgd'){
+                  this.res = "新加坡幣：" + Math.floor(this.twd / 20.98) 
+               }
+               else if(this.selected =='chf'){
+                  this.res = "瑞士法郎：" + Math.floor(this.twd / 30.71) 
+               }
+               else if(this.selected =='sek'){
+                  this.res = "瑞典克朗：" + Math.floor(this.twd / 3.36) 
+               }
+               else if(this.selected =='nzd'){
+                  this.res = "紐西蘭幣：" + Math.floor(this.twd / 19.96) 
+               }
+               else if(this.selected =='php'){
+                  this.res = "菲律賓披索：" + Math.floor(this.twd / 0.617) 
+               }
+               else if(this.selected =='myr'){
+                  this.res = "馬來西亞幣：" + Math.floor(this.twd / 7.14) 
+               }
+          },
+     },
+});
+        vm.mount('#app');
+
+</script>
+</body>
+</html>
