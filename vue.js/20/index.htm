@@ -77,60 +77,62 @@ const vm = Vue.createApp({
      },
      computed:{
           con: function(){
-          if(this.selected =='usd'){
-                this.res = "美金：" + Math.floor(this.twd / 28)
-                }
-              else if(this.selected =='jpy'){
-                  this.res = "日圓：" + Math.floor(this.twd / 0.26) 
-               }
-              else if(this.selected =='gbp'){
-                this.res = "英鎊：" + Math.floor(this.twd / 39.19)
-               }
-              else if(this.selected =='hkd'){
-                  this.res = "港幣：" + Math.floor(this.twd / 3.6) 
-               } 
-              else if(this.selected =='aud'){
-                  this.res = "澳幣：" + Math.floor(this.twd / 20.7) 
-               }
-               else if(this.selected =='thb'){
-                  this.res = "泰銖：" + Math.floor(this.twd / 0.92) 
-               }
-               else if(this.selected =='eur'){
-                  this.res = "歐元：" + Math.floor(this.twd / 33.33) 
-               }
-               else if(this.selected =='krw'){
-                  this.res = "韓圜：" + Math.floor(this.twd / 0.0261) 
-               }
-               else if(this.selected =='vnd'){
-                  this.res = "越南幣：" + Math.floor(this.twd / 0.0014) 
-               }
-               else if(this.selected =='idr'){
-                  this.res = "印尼盾：" + Math.floor(this.twd / 0.0023) 
-               }
-               else if(this.selected =='cny'){
-                  this.res = "人民幣：" + Math.floor(this.twd / 4.36) 
-               }
-               else if(this.selected =='cad'){
-                  this.res = "加拿大幣：" + Math.floor(this.twd / 22.47) 
-               }
-               else if(this.selected =='sgd'){
-                  this.res = "新加坡幣：" + Math.floor(this.twd / 20.98) 
-               }
-               else if(this.selected =='chf'){
-                  this.res = "瑞士法郎：" + Math.floor(this.twd / 30.71) 
-               }
-               else if(this.selected =='sek'){
-                  this.res = "瑞典克朗：" + Math.floor(this.twd / 3.36) 
-               }
-               else if(this.selected =='nzd'){
-                  this.res = "紐西蘭幣：" + Math.floor(this.twd / 19.96) 
-               }
-               else if(this.selected =='php'){
-                  this.res = "菲律賓披索：" + Math.floor(this.twd / 0.617) 
-               }
-               else if(this.selected =='myr'){
-                  this.res = "馬來西亞幣：" + Math.floor(this.twd / 7.14) 
-               }
+          switch(this.selected){
+              case 'usd':
+                  this.res = "美金：" + Math.floor(this.twd / 28);
+                  break;
+              case 'jpy':
+                  this.res = "日圓：" + Math.floor(this.twd / 0.26); 
+               break;
+              case 'gbp':
+                this.res = "英鎊：" + Math.floor(this.twd / 39.19);
+               break;
+              case 'hkd':
+                  this.res = "港幣：" + Math.floor(this.twd / 3.6); 
+               break; 
+              case 'aud':
+                  this.res = "澳幣：" + Math.floor(this.twd / 20.7); 
+               break;
+              case 'thb':
+                  this.res = "泰銖：" + Math.floor(this.twd / 0.92); 
+               break;
+              case 'eur':
+                  this.res = "歐元：" + Math.floor(this.twd / 33.33); 
+               break;
+              case 'krw':
+                  this.res = "韓圜：" + Math.floor(this.twd / 0.0261); 
+               break;
+              case 'vnd':
+                  this.res = "越南幣：" + Math.floor(this.twd / 0.0014); 
+               break;
+              case 'idr':
+                  this.res = "印尼盾：" + Math.floor(this.twd / 0.0023); 
+               break;
+              case 'cny':
+                  this.res = "人民幣：" + Math.floor(this.twd / 4.36); 
+               break;
+              case 'cad':
+                  this.res = "加拿大幣：" + Math.floor(this.twd / 22.47); 
+               break;
+              case 'sgd':
+                  this.res = "新加坡幣：" + Math.floor(this.twd / 20.98); 
+               break;
+              case 'chf':
+                  this.res = "瑞士法郎：" + Math.floor(this.twd / 30.71); 
+               break;
+              case 'sek':
+                  this.res = "瑞典克朗：" + Math.floor(this.twd / 3.36); 
+               break;
+              case 'nzd':
+                  this.res = "紐西蘭幣：" + Math.floor(this.twd / 19.96); 
+               break;
+              case 'php':
+                  this.res = "菲律賓披索：" + Math.floor(this.twd / 0.617); 
+               break;
+              case 'myr':
+                  this.res = "馬來西亞幣：" + Math.floor(this.twd / 7.14); 
+               break;
+          }
           },
      },
 });
